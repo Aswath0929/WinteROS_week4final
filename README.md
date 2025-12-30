@@ -55,7 +55,7 @@
 [image53]: ./assets/moveit-25.png "MoveIt"
 [image54]: ./assets/moveit-26.png "MoveIt"
 
-# Week 4: Simple-arm
+# Week 4: Simple Robotic arm
 
 # Introduction
 
