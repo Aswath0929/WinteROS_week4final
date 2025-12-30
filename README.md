@@ -63,7 +63,7 @@ In this lesson we'll lear how to build up a 4 axis robotic arm and make it move 
 
 ## Download ROS package
 
-To download the starter package, clone the following git repo with the `starter-branch` (using the `-b branch` flag) into your colcon workspace:
+To download the starter package, clone the following git repo into your colcon workspace:
 ```bash
 git clone https://github.com/Aswath0929/WinteROS_week4final
 ```
@@ -1458,98 +1458,11 @@ ros2 param set /move_group use_sim_time true
 And if we press the `Plan & Execute` button again, finally it's working in both RViz and in the Gazebo simulation!  
 ![alt text][image50]
 
-## Recap
 
-Let's collect the commands here that is needed to properly start MoveIt!
-
-### 1. In the first terminal start the simulation withour RViz (or close RViz after it opened):
-```bash
-ros2 launch erc_ros2_simple_arm spawn_robot.launch.py rviz:=False
 ```
 
-### 2. In another terminal start the MoveIt `move_group` backend:
-```bash
-ros2 launch erc_ros2_simple_arm_moveit_config move_group.launch.py
-```
-
-### 3. In a third terminal start RViz from the generated MoveIt package:
-```bash
-ros2 launch erc_ros2_simple_arm_moveit_config moveit_rviz.launch.py
-```
-
-### 4. And finally, set the parameter of MoveIt to use the simulation time:
-```bash
-ros2 param set /move_group use_sim_time true
-```
-
-## Limitations
-
-As soon as I set the joints to certain angles I'm not able to rotate the robotic arm anymore around the vertical axis because it's a 4 DoF robot and there aren't joints that could provide the right roll and yaw angles of the TCP. MoveIt works the best with at least 6 DoF robotic arms.
-
-![alt text][image51]
-
-> We can also try changing `position_only_ik: True` in the `kinematics.yaml` generated file - just add it if it's not there. In this case MoveIt is unable changing the gripper angle using the intercative tool but can move to any position in the space.
-> ```yaml
-> arm:
->   kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
->   kinematics_solver_search_resolution: 0.0050000000000000001
->   kinematics_solver_timeout: 0.0050000000000000001
->   position_only_ik: True
-> ```
 
 
 
 
-## Simplified startup
 
-To simplify the startup of MoveIt we can create our custom launch file that implements the steps 2., 3. and 4. above. Let's name it `start_moveit.launch.py`:
-
-```python
-import os
-from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from ament_index_python.packages import get_package_share_directory
-
-def generate_launch_description():
-
-    pkg_erc_ros2_simple_arm_moveit_config = get_package_share_directory('erc_ros2_simple_arm_moveit_config')
-
-    moveit_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkg_erc_ros2_simple_arm_moveit_config, 'launch', 'move_group.launch.py'),
-        )
-    )
-
-    moveit_rviz_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkg_erc_ros2_simple_arm_moveit_config, 'launch', 'moveit_rviz.launch.py'),
-        )
-    )
-
-    set_moveit_simtime_parameter = ExecuteProcess(
-        cmd=['ros2', 'param', 'set', '/move_group', 'use_sim_time', 'true'],
-        output='screen'
-    )
-
-    launchDescriptionObject = LaunchDescription()
-
-    launchDescriptionObject.add_action(moveit_launch)
-    launchDescriptionObject.add_action(moveit_rviz_launch)
-    launchDescriptionObject.add_action(set_moveit_simtime_parameter)
-
-    return launchDescriptionObject
-```
-
----
-
-Rebuild the workspace and start the simulation without RViz:
-```bash
-ros2 launch erc_ros2_simple_arm spawn_robot.launch.py rviz:=False
-```
-
-and in another terminal start the new launch file:
-
-```bash
-ros2 launch erc_ros2_simple_arm start_moveit.launch.py
-```
