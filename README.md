@@ -122,15 +122,15 @@ Let's see what will we do with the existing files and folders:
 - `urdf`: The URDF models of our robot, we'll extend the `mogi_arm.xacro` during this lesson
 - `worlds`: default Gazebo worlds that we'll use in the simulations.
 
-We have another package `bme_ros2_simple_arm_py` for our python scripts:
+We have another package `erc_ros2_simple_arm_py` for our python scripts:
 ```bash
 .
-├── bme_ros2_simple_arm_py
+├── erc_ros2_simple_arm_py
 │   ├── __init__.py
 │   └── test_inverse_kinematics.py
 ├── package.xml
 ├── resource
-│   └── bme_ros2_simple_arm_py
+│   └── erc_ros2_simple_arm_py
 ├── setup.cfg
 └── setup.py
 ```
@@ -141,7 +141,7 @@ After we downloaded the `starter-branch` from GitHub, let's rebuild the workspac
 
 Let's test the package with the usual launch file:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 ![alt text][image1]
@@ -152,7 +152,7 @@ The base of the robotic arm is already in the URDF file, but the colors in RViz 
 
 ```xml
   <!-- STEP 3 - RViz colors -->
-  <xacro:include filename="$(find bme_ros2_simple_arm)/urdf/materials.xacro" />
+  <xacro:include filename="$(find erc_ros2_simple_arm)/urdf/materials.xacro" />
 ```
 ![alt text][image2]
 
@@ -238,7 +238,7 @@ The shoulder of our robot is actually not 1 but 2 links, one for the pan and the
 
 Rebuild the workspace and try it:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 ![alt text][image4]
@@ -290,7 +290,7 @@ Let's add the elbow that is the connecting joint between upper arm and forearm.
 
 Rebuild the workspace and try it:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 ![alt text][image6]
@@ -338,7 +338,7 @@ Now add the wrist of the robotic arm:
 
 Rebuild the workspace and try it:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 ![alt text][image7]
@@ -472,7 +472,7 @@ And finally add a gripper. The gripper conists of a base and two fingers. The fi
 
 Rebuild the workspace and try it:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 ![alt text][image8]
@@ -516,12 +516,12 @@ And of course, include it in the beginning of our URDF file:
 
 ```xml
   <!-- STEP 8 - Gazebo plugin -->
-  <xacro:include filename="$(find bme_ros2_simple_arm)/urdf/mogi_arm.gazebo" />
+  <xacro:include filename="$(find erc_ros2_simple_arm)/urdf/mogi_arm.gazebo" />
 ```
 
 Rebuild the workspace and try it together with `rqt_graph`:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 ![alt text][image9]
@@ -620,7 +620,7 @@ We also have to add the `ROS2 control` to the `mogi_arm.gazebo` file:
 ```xml
   <gazebo>
     <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-      <parameters>$(find bme_ros2_simple_arm)/config/controller_position.yaml</parameters>
+      <parameters>$(find erc_ros2_simple_arm)/config/controller_position.yaml</parameters>
     </plugin>
   </gazebo>
 ```
@@ -717,21 +717,21 @@ Let's change the `geometry` tag within the `visual` tags:
 ```xml
       <geometry>
         <!-- <cylinder radius="0.1" length="0.05"/> -->
-        <mesh filename = "package://bme_ros2_simple_arm/meshes/shoulder.dae"/>
+        <mesh filename = "package://erc_ros2_simple_arm/meshes/shoulder.dae"/>
       </geometry>
 ```
 
 The available mesh files are the following:
 ```xml
-<mesh filename = "package://bme_ros2_simple_arm/meshes/shoulder.dae"/>
-<mesh filename = "package://bme_ros2_simple_arm/meshes/upper_arm.dae"/>
-<mesh filename = "package://bme_ros2_simple_arm/meshes/forearm.dae"/>
-<mesh filename = "package://bme_ros2_simple_arm/meshes/wrist.dae"/>
+<mesh filename = "package://erc_ros2_simple_arm/meshes/shoulder.dae"/>
+<mesh filename = "package://erc_ros2_simple_arm/meshes/upper_arm.dae"/>
+<mesh filename = "package://erc_ros2_simple_arm/meshes/forearm.dae"/>
+<mesh filename = "package://erc_ros2_simple_arm/meshes/wrist.dae"/>
 ```
 
 Rebuild the workspace and try it:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 ![alt text][image12]
@@ -746,7 +746,7 @@ Let's try first grabbing with friction!
 
 Just start the simulation:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 In another treminal start a joint trajectory controller:
@@ -799,7 +799,7 @@ We need to forward the attach and detach topics between ROS and Gazebo, so let's
 
 Rebuild the workspace and start the simulation:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 In another treminal start a joint trajectory controller:
@@ -843,7 +843,7 @@ And we have to forward its topic from Gazebo to ROS, add it to the `gz_bridge.ya
 
 Rebuild the workspace and start the simulation:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 In another treminal start a joint trajectory controller and touch an object with the left gripper finger:
@@ -888,7 +888,7 @@ It's useful to have a link that helps better visulaizing the tool center point (
 
 Rebuild the workspace and start the simulation:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 ![alt text][image16]
 
@@ -1012,7 +1012,7 @@ And finally add two nodes to the launch file, these are also familiar from the p
 
 Rebuild the workspace and start the simulation, add the camera to RViz:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 ![alt text][image17]
 
@@ -1149,7 +1149,7 @@ And update `image_bridge` and add another relay node:
 
 Rebuild the workspace and start the simulation, add both cameras to RViz:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 ![alt text][image18]
 
@@ -1200,7 +1200,7 @@ And we also have to forward two more messages `gz_bridge`:
 
 Rebuild the workspace and start the simulation, add the depth cloud visualizer to RViz:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 ![alt text][image19]
 
@@ -1212,7 +1212,7 @@ In the previous chapters we moved the robotic arm with the `rqt_joint_trajectory
 
 ![alt text][image20]
 
-The node is sending the joint trajectory commands on the `/arm_controller/joint_trajectory` topic. Let's write our own node to send joint angles. Create a new `send_joint_angles.py` node in the `bme_ros2_simple_arm_py` package:
+The node is sending the joint trajectory commands on the `/arm_controller/joint_trajectory` topic. Let's write our own node to send joint angles. Create a new `send_joint_angles.py` node in the `erc_ros2_simple_arm_py` package:
 
 ```python
 import rclpy
@@ -1268,12 +1268,12 @@ if __name__ == '__main__':
 
 Rebuild the workspace, start the simulation:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 And in another terminal start the new node:
 ```bash
-ros2 run bme_ros2_simple_arm_py send_joint_angles
+ros2 run erc_ros2_simple_arm_py send_joint_angles
 ```
 
 ![alt text][image21]
@@ -1307,7 +1307,7 @@ Since we already know `j0` and `j3` we only have to calculate `j1` and `j2` like
 
 ![alt text][image25]
 
-The inverse kinematics and forward kinematics calculation can be found in the `test_inverse_kinematics.py` file in the `bme_ros2_simple_arm_py` package. This is not a ROS node, just a simple python script to verify the correct calculation of the algorithm. 
+The inverse kinematics and forward kinematics calculation can be found in the `test_inverse_kinematics.py` file in the `erc_ros2_simple_arm_py` package. This is not a ROS node, just a simple python script to verify the correct calculation of the algorithm. 
 
 ## Inverse kinematics ROS node
 
@@ -1323,12 +1323,12 @@ point.positions = joint_angles
 
 Rebuild the workspace, start the simulation:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py
 ```
 
 And in another terminal start the new node:
 ```bash
-ros2 run bme_ros2_simple_arm_py inverse_kinematics
+ros2 run erc_ros2_simple_arm_py inverse_kinematics
 ```
 
 ![alt text][image26]
@@ -1352,7 +1352,7 @@ We might get various errors at this point, one is that our joint limits are inte
 [move_group-1]   what():  parameter 'robot_description_planning.joint_limits.left_finger_joint.max_velocity' has invalid type: expected [double] got [integer]
 ```
 
-We can fix this in the `bme_ros2_simple_arm_moveit_config/config/joint_limits.yaml` file, let's change every `max_velocity` and `max_acceleration` limits to a double for every joints.
+We can fix this in the `erc_ros2_simple_arm_moveit_config/config/joint_limits.yaml` file, let's change every `max_velocity` and `max_acceleration` limits to a double for every joints.
 
 ```yaml
   left_finger_joint:
@@ -1372,7 +1372,7 @@ Rebuild the workspace and try it again! This time we get the green message that 
 
 So in another terminal start the RViz from the MoveIt package:
 ```bash
-ros2 launch bme_ros2_simple_arm_moveit_config moveit_rviz.launch.py
+ros2 launch erc_ros2_simple_arm_moveit_config moveit_rviz.launch.py
 ```
 
 ![alt text][image48]
@@ -1389,7 +1389,7 @@ And we get a couple of other error messages from MoveIt:
 [move_group-1] [INFO] [1743351127.963757038] [move_group.moveit.moveit.ros.move_group.move_action]: FAILURE
 ```
 
-Acceleration limits are missing, we have to add acceleration limits manually for every joints in the same `bme_ros2_simple_arm_moveit_config/config/joint_limits.yaml` file:
+Acceleration limits are missing, we have to add acceleration limits manually for every joints in the same `erc_ros2_simple_arm_moveit_config/config/joint_limits.yaml` file:
 
 ```yaml
     has_acceleration_limits: true
@@ -1408,7 +1408,7 @@ Rebuild the workspace and try it again! Start RViz and try to execute a path pla
 [move_group-1] [INFO] [1743351310.643058114] [move_group.moveit.moveit.ros.move_group.move_action]: CONTROL_FAILED
 ```
 
-Let's fix the `bme_ros2_simple_arm_moveit_config/config/moveit_controllers.yaml` file that seems is generated without some important rows. Action namespace (`action_ns`) and the `default: true` tag is missing, let's add them:
+Let's fix the `erc_ros2_simple_arm_moveit_config/config/moveit_controllers.yaml` file that seems is generated without some important rows. Action namespace (`action_ns`) and the `default: true` tag is missing, let's add them:
 
 ```yaml
 # MoveIt uses this configuration for controller management
@@ -1464,17 +1464,17 @@ Let's collect the commands here that is needed to properly start MoveIt!
 
 ### 1. In the first terminal start the simulation withour RViz (or close RViz after it opened):
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py rviz:=False
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py rviz:=False
 ```
 
 ### 2. In another terminal start the MoveIt `move_group` backend:
 ```bash
-ros2 launch bme_ros2_simple_arm_moveit_config move_group.launch.py
+ros2 launch erc_ros2_simple_arm_moveit_config move_group.launch.py
 ```
 
 ### 3. In a third terminal start RViz from the generated MoveIt package:
 ```bash
-ros2 launch bme_ros2_simple_arm_moveit_config moveit_rviz.launch.py
+ros2 launch erc_ros2_simple_arm_moveit_config moveit_rviz.launch.py
 ```
 
 ### 4. And finally, set the parameter of MoveIt to use the simulation time:
@@ -1513,17 +1513,17 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
 
-    pkg_bme_ros2_simple_arm_moveit_config = get_package_share_directory('bme_ros2_simple_arm_moveit_config')
+    pkg_erc_ros2_simple_arm_moveit_config = get_package_share_directory('erc_ros2_simple_arm_moveit_config')
 
     moveit_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_bme_ros2_simple_arm_moveit_config, 'launch', 'move_group.launch.py'),
+            os.path.join(pkg_erc_ros2_simple_arm_moveit_config, 'launch', 'move_group.launch.py'),
         )
     )
 
     moveit_rviz_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_bme_ros2_simple_arm_moveit_config, 'launch', 'moveit_rviz.launch.py'),
+            os.path.join(pkg_erc_ros2_simple_arm_moveit_config, 'launch', 'moveit_rviz.launch.py'),
         )
     )
 
@@ -1545,11 +1545,11 @@ def generate_launch_description():
 
 Rebuild the workspace and start the simulation without RViz:
 ```bash
-ros2 launch bme_ros2_simple_arm spawn_robot.launch.py rviz:=False
+ros2 launch erc_ros2_simple_arm spawn_robot.launch.py rviz:=False
 ```
 
 and in another terminal start the new launch file:
 
 ```bash
-ros2 launch bme_ros2_simple_arm start_moveit.launch.py
+ros2 launch erc_ros2_simple_arm start_moveit.launch.py
 ```
