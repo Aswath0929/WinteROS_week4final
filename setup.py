@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'bme_ros2_simple_arm_py'
+package_name = 'erc_ros2_simple_arm_py'
 
 setup(
     name=package_name,
@@ -13,8 +13,8 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='David Dudas',
-    maintainer_email='david.dudas@outlook.com',
+    maintainer='Aswath Sahoo',
+    maintainer_email='aswath_sahoo@yahoo.com',
     description='Python nodes for simulation of a robotic arm with Gazebo Harmonic and ROS Jazzy for BME MOGI ROS2 course',
     license='Apache License 2.0',
     tests_require=['pytest'],
