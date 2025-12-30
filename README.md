@@ -65,10 +65,10 @@ In this lesson we'll lear how to build up a 4 axis robotic arm and make it move 
 
 To download the starter package, clone the following git repo with the `starter-branch` (using the `-b branch` flag) into your colcon workspace:
 ```bash
-git clone -b starter-branch https://github.com/MOGI-ROS/Week-9-10-Simple-arm
+git clone https://github.com/Aswath0929/WinteROS_week4final
 ```
 
-Let's take a look what's inside the `bme_ros2_simple_arm` package with the `tree` command!
+Let's take a look what's inside the `erc_ros2_simple_arm` package with the `tree` command!
 
 
 ```bash
