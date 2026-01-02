@@ -1371,7 +1371,7 @@ It plans.
 It reasons about its own body.
 And it moves with purpose — because you designed the system that tells it how.
 
-#The Assignment
+# The Assignment
 You’ve given the robot perception.
 You’ve given the arm intelligence and control.
 
