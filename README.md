@@ -1351,7 +1351,7 @@ joint_angles = inverse_kinematics([0.4, 0, 0.15], "open", 0)
 ```
 
 
-<img src="dummy-rdj.gif" width="500">
+<img src="dummy-rdj.gif" width="800">
 
 
 
