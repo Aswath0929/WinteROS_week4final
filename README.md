@@ -1354,8 +1354,22 @@ joint_angles = inverse_kinematics([0.4, 0, 0.15], "open", 0)
 <img src="dummy-rdj.gif" width="800">
 
 
+At this point, the robot doesn’t just move —
+it chooses how to move.
 
+You’ve built the bridge from target position to joint motion, from “I want the hand there” to every servo knowing exactly what it must do. Your inverse kinematics node now threads geometry, trigonometry, and ROS messages together into a single decision-making pipeline.
 
+StarkOS now has control intelligence.
+The arm is no longer guessing.
+
+Direct motor commands end here.
+From now on, the robot computes, solves, and executes.
+
+The arm doesn’t just follow instructions anymore.
+
+It plans.
+It reasons about its own body.
+And it moves with purpose — because you designed the system that tells it how.
 
 
 
