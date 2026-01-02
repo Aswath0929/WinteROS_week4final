@@ -1371,6 +1371,35 @@ It plans.
 It reasons about its own body.
 And it moves with purpose — because you designed the system that tells it how.
 
+#The Assignment
+You’ve given the robot perception.
+You’ve given the arm intelligence and control.
 
+Now comes the real test.
+
+Your mission is to integrate the mobile robot with the robotic arm — two independent systems becoming a single coordinated platform. Locomotion and manipulation must work together, sharing data, timing, and intent through ROS.
+
+The goal is simple to say and difficult to execute:
+
+Build a system where the robot moves to a target… and the arm completes the task once it arrives.
+
+Navigation meets inverse kinematics.
+Base control meets precision articulation.
+Two subsystems — one machine.
+
+Just like Stark’s suit, every component must stop acting alone and begin operating as part of a unified system.
+
+This is not a step-by-step exercise.
+
+Clues, hints, and mission briefings will be released gradually —
+exactly the way new suit capabilities are unlocked in the lab.
+
+Your task now:
+
+Integrate. Coordinate. Make the robot and arm act as one coherent unit.
+
+The suit doesn’t come together automatically.
+
+You assemble it.
 
 
