@@ -1371,7 +1371,7 @@ It plans.
 It reasons about its own body.
 And it moves with purpose — because you designed the system that tells it how.
 
-# The Assignment
+# The Assignment | One Final Task!
 You’ve given the robot perception.
 You’ve given the arm intelligence and control.
 
@@ -1392,7 +1392,7 @@ Just like Stark’s suit, every component must stop acting alone and begin opera
 This is not a step-by-step exercise.
 
 Clues, hints, and mission briefings will be released gradually —
-exactly the way new suit capabilities are unlocked in the lab.
+exactly the way new suit capabilities are unlocked in the lab. 
 
 Your task now:
 
