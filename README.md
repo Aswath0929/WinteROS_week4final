@@ -70,6 +70,10 @@ By the end, the arm won’t just move.
 It will obey geometry, respect physics, and execute with Stark-level precision —
 not because it has to… but because you built it to.
 
+Let's get started!
+
+<img src="dum-e-iron-man.gif" width="800">
+
 ## Download ROS package
 
 To download the starter package, clone the following git repo into your colcon workspace:
