@@ -59,7 +59,16 @@
 
 # Introduction
 
-In this lesson we'll lear how to build up a 4 axis robotic arm and make it move with our own ROS2 nodes, with our custom inverse kinematics!
+In this lesson, we’re stepping straight into Stark’s workshop mode. Not theory. Not spectator mode. You’re going to build a four-axis robotic arm the way Tony would — piece by piece, joint by joint, tightening bolts with one hand while running math in your head with the other. This isn’t a kit you “assemble.” It’s a system you engineer.
+
+But the real magic isn’t the metal — it’s the mind you put inside it.
+
+You won’t just download someone else’s solution. You’ll design your own inverse kinematics — your personal targeting computer, the same class of math that lets a suit align repulsors, stabilize flight vectors, and hit exactly what it intends to. Your custom ROS 2 nodes become the nervous system, firing commands like Stark-grade neural impulses, turning coordinates into controlled motion.
+
+By the end, the arm won’t just move.
+
+It will obey geometry, respect physics, and execute with Stark-level precision —
+not because it has to… but because you built it to.
 
 ## Download ROS package
 
